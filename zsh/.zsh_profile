@@ -2,7 +2,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
 export DOTFILES=$HOME/dotfiles
-alias vim="nvim"
+alias vim=nvim
 
 eslintify() {
     cat $1 > /tmp/file_to_eslint
