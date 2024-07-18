@@ -8,27 +8,37 @@ return {
 			"marilari88/neotest-vitest",
 			"nvim-neotest/nvim-nio",
 			"nvim-neotest/neotest-plenary",
+            "haydenmeade/neotest-jest",
 		},
 		config = function()
 			local neotest = require("neotest")
 			neotest.setup({
+                discovery = {
+		            enabled = false,
+	            },
 				adapters = {
 					require("neotest-vitest"),
-					require("neotest-plenary").setup({
-						-- this is my standard location for minimal vim rc
-						-- in all my projects
-						min_init = "./scripts/tests/minimal.vim",
-					}),
+                    require("neotest-jest")({
+                        jestCommand = "npm test --",
+                        jestConfigFile = "custom.jest.config.ts",
+                        env = { CI = true },
+                        cwd = function(path)
+                            return vim.fn.getcwd()
+                        end,
+                    }),
 				},
 			})
-
-			vim.keymap.set("n", "<leader>tc", function()
-				neotest.run.run()
-			end)
-
-			vim.keymap.set("n", "<leader>tf", function()
-				neotest.run.run(vim.fn.expand("%"))
-			end)
 		end,
+
+        keys = {
+            { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
+            { "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end, desc = "Run All Test Files" },
+            { "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest" },
+            { "<leader>tL", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug nearest test" },
+            { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
+            { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output" },
+            { "<leader>tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
+            { "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop" },
+        },
 	},
 }
