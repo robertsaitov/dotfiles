@@ -31,3 +31,4 @@ fi
 
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer\n"
 export PATH="~/.local/scripts:$PATH"
+export DOCKER_HOST=unix:///run/user/1000/docker.sock

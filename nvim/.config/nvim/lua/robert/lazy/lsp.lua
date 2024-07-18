@@ -43,7 +43,6 @@ return {
 				"mypy", -- static type checking
 				"isort", -- python imports sort
 				-- "eslint_d", -- js linter
-				"goimports_reviser", -- go imports sort
 			},
 		})
 
@@ -64,19 +63,12 @@ return {
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.stylua, -- lua formatter
 				formatting.isort,
-				formatting.gofumpt,
-				formatting.goimports_reviser,
 				formatting.black, -- python formatter
 				diagnostics.mypy,
-				--diagnostics.eslint_d.with({ -- js/ts linter
-				--	condition = function(root_dir)
-				--		return root_dir.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
-				--	end,
-				-- }),
 			},
 
 			-- configure format on save
-			on_attach = function(current_client, bufnr)
+			--[[ on_attach = function(current_client, bufnr)
 				if current_client.supports_method("textDocument/formatting") then
 					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -94,7 +86,7 @@ return {
 						end,
 					})
 				end
-			end,
+			end, ]]
 		})
 
 		local prettier = require("prettier")
