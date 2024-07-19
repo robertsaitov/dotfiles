@@ -151,6 +151,13 @@ return {
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+        -- path completion
+        cmp.setup({
+            sources = {
+                { name = "path" },
+            },
+        })
+
         cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
