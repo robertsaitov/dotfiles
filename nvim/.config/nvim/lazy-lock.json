@@ -43,6 +43,7 @@
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "prettier.nvim": { "branch": "main", "commit": "d98e732cb73690b07c00c839c924be1d1d9ac5c2" },
   "rose-pine": { "branch": "main", "commit": "9e4320d0bab7f261921d6af7d1c1bbc1a1e3dc67" },
+  "telescope-smart-goto.nvim": { "branch": "main", "commit": "8329f179d988d987a2e1ac71327782291291a4ab" },
   "telescope.nvim": { "branch": "master", "commit": "bfcc7d5c6f12209139f175e6123a7b7de6d9c18a" },
   "tokyonight.nvim": { "branch": "main", "commit": "1471dab694ad88351185758bb4275624d8b798ec" },
   "trouble.nvim": { "branch": "main", "commit": "ad8ef38666834e9e438f84bd446657445bc2a71e" },
