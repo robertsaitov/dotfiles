@@ -116,7 +116,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "tsserver",
+                "vtsls",
                 "html",
                 "cssls",
                 "jedi_language_server", -- python
@@ -147,6 +147,7 @@ return {
                     })
                 end,
             },
+            automatic_installation = true,
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
