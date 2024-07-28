@@ -10,6 +10,9 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/robert/.zshrc'
@@ -27,7 +30,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
-
 
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer\n"
 export PATH="~/.local/scripts:$PATH"
