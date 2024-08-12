@@ -25,7 +25,7 @@ return {
       workspaces = {
         {
           name = "ObsidianVault",
-          path = "~/personal/obsidian-notes",
+          path = "~/personal/obsidian-notes/",
         },
       },
       completion = {
@@ -35,7 +35,7 @@ return {
         prepend_note_id = true,
         min_chars = 2,
       },
-      new_notes_location = "current_dir",
+      new_notes_location = "~/personal/obsidian-notes/",
       wiki_link_func = function(opts)
         if opts.id == nil then
           return string.format("[[%s]]", opts.label)
@@ -80,7 +80,7 @@ return {
       end,
 
       templates = {
-        subdir = "Templates",
+        subdir = "templates",
         date_format = "%Y-%m-%d-%a",
         time_format = "%H:%M",
       },
