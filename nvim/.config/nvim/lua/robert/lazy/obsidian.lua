@@ -24,10 +24,10 @@ return {
         require("obsidian").setup({
             workspaces = {
                 {
-                    name = "ObsidianVault",
+                    name = "regular-notes",
                     path = "~/personal/obsidian-notes/",
                     overrides = {
-                        notes_subdir = "fleet",
+                        notes_subdir = "inbox",
                     },
                 },
             },
@@ -83,7 +83,7 @@ return {
             end,
 
             templates = {
-                subdir = "templates",
+                subdir = "assets/templates",
                 date_format = "%Y-%m-%d-%a",
                 time_format = "%H:%M",
             },
