@@ -35,7 +35,7 @@ return {
                 nvim_cmp = true,
                 -- 1. Whether to add the note ID during completion.
                 -- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
-                prepend_note_id = true,
+                prepend_note_id = false,
                 min_chars = 2,
             },
             new_notes_location = "notes_subdir",
