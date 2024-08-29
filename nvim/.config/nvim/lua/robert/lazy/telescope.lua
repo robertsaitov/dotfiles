@@ -3,13 +3,24 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "joshmedeski/telescope-smart-goto.nvim",
-        "nvim-telescope/telescope-live-grep-args.nvim"
+        "nvim-telescope/telescope-live-grep-args.nvim",
     },
 
     config = function()
         local builtin = require("telescope.builtin")
         local telescope = require("telescope")
-        telescope.setup({})
+        telescope.setup({
+            defaults = {
+                vimgrep_arguments = {
+                    "rg",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case",
+                },
+            },
+        })
         vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
         vim.keymap.set(
             "n",
