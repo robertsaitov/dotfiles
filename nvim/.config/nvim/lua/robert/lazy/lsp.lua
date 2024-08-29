@@ -43,6 +43,7 @@ return {
                 "mypy", -- static type checking
                 "isort", -- python imports sort
                 "eslint_d", -- js linter
+                "jq", -- json formatter
             },
         })
 
@@ -131,6 +132,7 @@ return {
                 "angularls",
                 "cmake",
                 "bashls",
+                "jsonls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
