@@ -52,6 +52,16 @@ autocmd("TextYankPost", {
     end,
 })
 
+-- oil fix relative path
+vim.api.nvim_create_augroup('OilRelPathFix', {})
+vim.api.nvim_create_autocmd("BufLeave", {
+	group = 'OilRelPathFix',
+	pattern  = "oil:///*",
+	callback = function ()
+		vim.cmd("cd .")
+	end
+})
+
 autocmd({ "BufWritePre" }, {
     group = RobertGroup,
     pattern = "*",
