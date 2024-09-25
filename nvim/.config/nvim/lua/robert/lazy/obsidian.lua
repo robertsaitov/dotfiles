@@ -16,7 +16,6 @@ return {
         "nvim-lua/plenary.nvim",
 
         -- Optional
-        "nvim-telescope/telescope.nvim",
         "hrsh7th/nvim-cmp",
         "nvim-treesitter/nvim-treesitter",
     },
