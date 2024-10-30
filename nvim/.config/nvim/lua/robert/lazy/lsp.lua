@@ -235,11 +235,5 @@ return {
                 prefix = "",
             },
         })
-        vim.api.nvim_set_keymap(
-            "n",
-            "<Leader>e",
-            ":lua vim.diagnostic.open_float()<CR>",
-            { noremap = true, silent = true }
-        )
     end,
 }
