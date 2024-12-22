@@ -3,11 +3,9 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
-        local Robert_Fugitive = vim.api.nvim_create_augroup("Robert_Fugitive", {})
-
-        local autocmd = vim.api.nvim_create_autocmd
-        autocmd("BufWinEnter", {
-            group = Robert_Fugitive,
+        vim.api.nvim_create_augroup("Fugitive", {})
+        vim.api.nvim_create_autocmd("BufWinEnter", {
+            group = "Fugitive",
             pattern = "*",
             callback = function()
                 if vim.bo.ft ~= "fugitive" then
