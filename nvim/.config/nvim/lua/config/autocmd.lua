@@ -1,7 +1,3 @@
-require("robert.remap")
-require("robert.set")
-require("robert.lazy_init")
-
 function R(name)
 	require("plenary.reload").reload_module(name)
 end
@@ -64,6 +60,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	command = [[%s/\s\+$//e]],
 })
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
