@@ -6,7 +6,7 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    "height": 32,
+    "height": 31,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -14,58 +14,89 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","","custom/padd"],
-	"modules-center": ["custom/padd","custom/l_end","custom/power","custom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","wlr/taskbar","idle_inhibitor","clock","custom/r_end","custom/l_end","custom/cliphist","custom/r_end","custom/l_end","custom/wbar","custom/r_end","custom/l_end","custom/wallchange","custom/r_end","custom/l_end","custom/theme","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","","custom/padd"],
+	"modules-left": ["custom/padd","custom/l_end","cpu","memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","idle_inhibitor","clock","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
+	"modules-center": ["custom/padd","custom/l_end","wlr/taskbar","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/l_end","backlight","network","bluetooth","pulseaudio","pulseaudio#microphone","custom/updates","custom/keybindhint","custom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","custom/wallchange","custom/theme","custom/wbar","custom/cliphist","custom/power","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
 
-    "custom/power": {
-        "format": "{}",
+    "cpu": {
+        "interval": 10,
+        "format": "󰍛 {usage}%",
         "rotate": 0,
-        "exec": "echo ; echo  logout",
-        "on-click": "~/.config/hypr/scripts/logoutlaunch.sh 2",
-        "interval" : 86400, // once every day
-        "tooltip": true
+        "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
     },
 
-    "tray": {
-        "icon-size": 19,
-        "rotate": 0,
-        "spacing": 5
-    },
-
-    "battery": {
+    "memory": {
         "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
+            "c": 90, // critical
+            "h": 60, // high
+            "m": 30, // medium
         },
-        "format": "{icon} {capacity}%",
+        "interval": 30,
+        "format": "󰾆 {used}GB",
         "rotate": 0,
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        "format-m": "󰾅 {used}GB",
+        "format-h": "󰓅 {used}GB",
+        "format-c": " {used}GB",
+        "format-alt": "󰾆 {percentage}%",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
     },
 
-	"wlr/taskbar": {
-		"format": "{icon}",
-		"rotate": 0,
-		"icon-size": 19,
-		"icon-theme": "Tela-circle-dracula",
-        "spacing": 0,
-		"tooltip-format": "{title}",
-		"on-click": "activate",
-		"on-click-middle": "close",
-		"ignore-list": [
-			"Alacritty"
-		],
-		"app_ids-mapping": {
-			"firefoxdeveloperedition": "firefox-developer-edition"
-		}
-	},
+    "custom/cpuinfo": {
+        "exec": " ~/.config/hypr/scripts/cpuinfo.sh",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000
+    },
+
+    "custom/gpuinfo": {
+        "exec": " ~/.config/hypr/scripts/gpuinfo.sh",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
+        "on-click": "~/.config/hypr/scripts/gpuinfo.sh --toggle",
+    },
+
+    "custom/gpuinfo#nvidia": {
+        "exec": " ~/.config/hypr/scripts/gpuinfo.sh --use nvidia ",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
+    },
+
+    "custom/gpuinfo#amd": {
+        "exec": " ~/.config/hypr/scripts/gpuinfo.sh --use amd ",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
+    },
+
+    "custom/gpuinfo#intel": {
+        "exec": " ~/.config/hypr/scripts/gpuinfo.sh --use intel ",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
+    },
 
     "idle_inhibitor": {
         "format": "{icon}",
@@ -101,26 +132,139 @@
         }
     },
 
-    "custom/cliphist": {
-        "format": "{}",
+    "hyprland/workspaces": {
+        "disable-scroll": true,
         "rotate": 0,
-        "exec": "echo ; echo 󰅇 clipboard history",
-        "on-click": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh c",
-        "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d",
-        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w",
-        "interval" : 86400, // once every day
-        "tooltip": true
+        "all-outputs": true,
+        "active-only": false,
+        "on-click": "activate",
+        "persistent-workspaces": {
+        }
     },
 
-    "custom/wbar": {
-        "format": "{}", //    //
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"rotate": 0,
+		"icon-size": 18,
+		"icon-theme": "Tela-circle-dracula",
+        "spacing": 0,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"Alacritty"
+		],
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		}
+	},
+
+    "backlight": {
+        "device": "intel_backlight",
         "rotate": 0,
-        "exec": "echo ; echo  switch bar //  dock",
-        "on-click": "~/.config/hypr/scripts/wbarconfgen.sh n",
-        "on-click-right": "~/.config/hypr/scripts/wbarconfgen.sh p",
-        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/quickapps.sh kitty firefox spotify code dolphin",
-        "interval" : 86400,
-        "tooltip": true
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "min-length": 6
+    },
+
+    "network": {
+        "tooltip": true,
+        "format-wifi": " ",
+        "rotate": 0,
+        "format-ethernet": "󰈀 ",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": "󰖪 ",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+        "interval": 2,
+    },
+
+    "bluetooth": {
+        "format": "",
+        "rotate": 0,
+        "format-disabled": "",
+        "format-connected": " {num_connections}",
+        "format-connected-battery": "{icon} {num_connections}",
+        // "format-connected-battery": "{icon} {device_alias}-{device_battery_percentage}%",
+        "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device If this config option is not defined or none of the devices in the list are connected, it will fall back to showing the last connected device.
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}",
+        "rotate": 0,
+        "format-muted": "婢",
+        "on-click": "pavucontrol -t 3",
+        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -o m",
+        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -o i",
+        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -o d",
+        "tooltip-format": "{icon} {desc} // {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "rotate": 0,
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "pavucontrol -t 4",
+        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -i m",
+        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -i i",
+        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -i d",
+        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+        "scroll-step": 5
+    },
+
+    "custom/updates": {
+        "exec": "~/.config/hypr/scripts/systemupdate.sh",
+        "return-type": "json",
+        "format": "󰮯 {}",
+        "rotate": 0,
+        "on-click": "~/.config/hypr/scripts/systemupdate.sh up",
+        "interval": 86400, // once every day
+        "tooltip": true,
+    },
+
+    "custom/keybindhint": {
+        "format": " ",
+        "rotate": 0,
+        "on-click": "Hyprdots show binds",
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "rotate": 0,
+        "spacing": 5
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "rotate": 0,
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
 
     "custom/wallchange": {
@@ -141,6 +285,37 @@
         "on-click": "~/.config/hypr/scripts/themeswitch.sh -n",
         "on-click-right": "~/.config/hypr/scripts/themeswitch.sh -p",
         "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/themeselect.sh",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/wbar": {
+        "format": "{}", //    //
+        "rotate": 0,
+        "exec": "echo ; echo  switch bar //  dock",
+        "on-click": "~/.config/hypr/scripts/wbarconfgen.sh n",
+        "on-click-right": "~/.config/hypr/scripts/wbarconfgen.sh p",
+        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/quickapps.sh kitty firefox spotify code dolphin",
+        "interval" : 86400,
+        "tooltip": true
+    },
+
+    "custom/cliphist": {
+        "format": "{}",
+        "rotate": 0,
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh c",
+        "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/power": {
+        "format": "{}",
+        "rotate": 0,
+        "exec": "echo ; echo  logout",
+        "on-click": "~/.config/hypr/scripts/logoutlaunch.sh 2",
         "interval" : 86400, // once every day
         "tooltip": true
     },
