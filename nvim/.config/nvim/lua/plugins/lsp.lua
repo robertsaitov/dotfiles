@@ -72,7 +72,6 @@ return {
 				"clangd",
 				"ansiblels",
 				"angularls",
-				"cmake",
 				"bashls",
 				"jsonls",
 			},
