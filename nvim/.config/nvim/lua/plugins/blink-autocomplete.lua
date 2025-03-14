@@ -7,8 +7,8 @@ return {
 			preset = "default",
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
-			["<Tab>"] = { "select_next", "fallback" },
-			["<S-Tab>"] = { "select_prev", "fallback" },
+			-- ["<Tab>"] = { "select_next", "fallback" },
+			-- ["<S-Tab>"] = { "select_prev", "fallback" },
 		},
 
 		appearance = {
