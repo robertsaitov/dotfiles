@@ -34,4 +34,4 @@ fi
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer\n"
 export PATH="$HOME/.local/scripts:/usr/local/go/bin:$PATH"
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
-source "/home/robert/.zsh_profile"
+source "$HOME/.zsh_profile"
