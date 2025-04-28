@@ -1,7 +1,6 @@
 return {
     "tpope/vim-fugitive",
     dependencies = {
-        "sindrets/diffview.nvim",
        "lewis6991/gitsigns.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
