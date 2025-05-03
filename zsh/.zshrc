@@ -15,16 +15,13 @@ bindkey "^[[1;5D" backward-word
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/robert/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Run tmux at startup
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
@@ -35,3 +32,6 @@ bindkey -s ^f "~/.local/scripts/tmux-sessionizer\n"
 export PATH="$HOME/.local/scripts:/usr/local/go/bin:$PATH"
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 source "$HOME/.zsh_profile"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
