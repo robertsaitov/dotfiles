@@ -29,9 +29,13 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer\n"
-export PATH="$HOME/.local/scripts:/usr/local/go/bin:$PATH"
+export PATH="$HOME/.local/scripts:/usr/local/go/bin:$HOME/.local/bin:$PATH"
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 source "$HOME/.zsh_profile"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Hishtory Config:
+export PATH="$PATH:/home/robert/.hishtory"
+source /home/robert/.hishtory/config.zsh
