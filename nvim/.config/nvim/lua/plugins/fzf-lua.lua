@@ -22,7 +22,7 @@ return {
 			},
 		})
 		vim.keymap.set("n", "<leader>ff", fzf.files, {})
-		vim.keymap.set("n", "<leader>fg", fzf.live_grep_glob, { desc = "Live Grep" })
+		vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live Grep" })
 		vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Find Buffers" })
 		vim.keymap.set("n", "<leader>fh", fzf.helptags, { desc = "Find Help Tags" })
 		vim.keymap.set("n", "<leader>fs", fzf.lsp_document_symbols, { desc = "Find Symbols" })
