@@ -8,6 +8,7 @@ return {
 			formatters_by_ft = {
                 c = { "clang-format" },
                 cpp = { "clang-format" },
+                cmake = {"cmakelang "},
 				go = { "gofumpt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
