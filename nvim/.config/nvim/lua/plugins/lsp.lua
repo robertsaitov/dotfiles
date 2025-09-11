@@ -31,6 +31,10 @@ return {
 			automatic_installation = true,
 		})
 
+		vim.lsp.config("ansiblels", {
+			filetypes = { "yaml", "yml", "yaml.ansible" },
+		})
+
 		vim.lsp.config("basedpyright", {
 			settings = {
 				basedpyright = {
