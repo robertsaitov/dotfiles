@@ -3,9 +3,10 @@ return {
     opts = {
         default_file_explorer = true,
         skip_confirm_for_simple_edits = true,
-        -- win_options = {
-        --     signcolumn = "yes:2",
-        -- },
+        win_options = {
+            winbar = "%#@attribute.builtin#%{substitute(v:lua.require('oil').get_current_dir(), '^' . $HOME, '~', '')}",
+            -- signcolumn = "yes:2",
+        },
         view_options = {
             -- Show files and directories that start with "."
             show_hidden = true,
