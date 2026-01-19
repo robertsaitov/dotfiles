@@ -27,6 +27,7 @@ return {
 				"ansiblels",
 				"bashls",
 				"jsonls",
+                "marksman",
 			},
 			automatic_installation = true,
 		})
