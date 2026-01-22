@@ -1,7 +1,6 @@
 ---
 description: Code review without edits
 mode: primary
-model: GLM-4.7
 permission:
   edit: allow
   bash:
