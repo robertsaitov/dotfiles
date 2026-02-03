@@ -4,10 +4,10 @@ description: Execute commands in devcontainer
 compatibility: opencode
 ---
 ## Purpose
-Run project commands inside a devcontainer using Podman, while keeping the AI agent on the host.
+Run project commands inside a devcontainer using Podman (default) or Docker, while keeping the AI agent on the host.
 
 ## Preconditions
-- Podman installed
+- Podman or Docker installed
 - devcontainer CLI installed
 - `.devcontainer/devcontainer.json` present
 
