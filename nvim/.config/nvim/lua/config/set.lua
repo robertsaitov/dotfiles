@@ -48,3 +48,6 @@ vim.g.clipboard = {
     ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
   },
 }
+
+-- mouse scroll
+vim.opt.mousescroll='ver:5,hor:2'
