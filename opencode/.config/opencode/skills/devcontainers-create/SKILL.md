@@ -23,7 +23,7 @@ This skill should avoid editor-specific settings (no VS Code customization block
 - `Dockerfile` based on `registry.fedoraproject.org/fedora:<release>` (default 43)
 - `bindep.txt` listing default Linux packages to install (one per line), parsed by the Dockerfile
 - `features` only for tools that must be installed via devcontainer features
-- `postCreateCommand` for any extra packages or global installs
+- `postCreateCommand` for any extra packages (like npm) or global installs
 
 ## Rules
 - Use the templates in this skill folder as the starting point, copy them into the project, and update them to match the project requirements.
