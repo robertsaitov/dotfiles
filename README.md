@@ -1,7 +1,4 @@
-=============================================
-Makefile for using GNU stow more conveniently
-=============================================
-
+# Makefile for using GNU stow more conveniently
 -------------------------------------------------
 Use with a new stow directory rooted at ``$HOME``
 -------------------------------------------------
@@ -77,4 +74,3 @@ Change location of stow directory
 #. Move the stow directory to new location.
 #. ``cd`` to new location of stow directory.
 #. ``make``
-

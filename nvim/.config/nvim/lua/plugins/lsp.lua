@@ -23,7 +23,6 @@ return {
 				"cssls",
 				"basedpyright",
 				"clangd",
-                "cmake",
 				"ansiblels",
 				"bashls",
 				"jsonls",

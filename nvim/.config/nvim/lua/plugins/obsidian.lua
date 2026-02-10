@@ -3,6 +3,7 @@ return {
 	version = "*",
 	ft = "markdown",
 	opts = {
+        legacy_commands = false,
 		workspaces = {
 			{
 				name = "regular-notes",
@@ -57,7 +58,7 @@ return {
 		},
 		ui = {
 			enable = true,
-			checkboxes = {},
+			checkbox = {},
 			bullets = {},
 			external_link_icon = {},
 		},
