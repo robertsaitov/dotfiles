@@ -1,49 +1,40 @@
 ---
 name: devcontainer-create
-description: Create devcontainers for projects
+description: Create devcontainers for the project with Dockerfile + bindep list
 compatibility: opencode
 ---
 ## Purpose
-Create a reusable Fedora-based devcontainer for any project. The base should always be a stable Fedora release. The skill supports two modes:
+Create a reusable devcontainer for any project using a generic Dockerfile and a bindep dependency file.
+The skill supports two modes:
 
 1) User-specified tools and versions
 2) AI-inferred tools and versions
 
 This skill should avoid editor-specific settings (no VS Code customization blocks).
 
+## Defaults
+- Fedora release: 43
+- Include `common-utils` and `git` features
+- No editor customization
+- Prefer Linux packages listed in `bindep.txt` over `postCreateCommand`
+
+## Definitions
+- `dockerFile` in `devcontainer.json` pointing at the Dockerfile (no `image` field)
+- `Dockerfile` based on `registry.fedoraproject.org/fedora:<release>` (default 43)
+- `bindep.txt` listing default Linux packages to install (one per line), parsed by the Dockerfile
+- `features` only for tools that must be installed via devcontainer features
+- `postCreateCommand` for any extra packages or global installs
+
+## Rules
+- Use the templates in this skill folder as the starting point, copy them into the project, and update them to match the project requirements.
+- Make sure to reference all base template files within {baseDir} of this skill directory when you generate project wide files.
+
 ## Inputs
-Provide either:
+Provide/request either:
 
 - A list of tools and versions
 - A brief description of the project stack and requirements
 
 ## Output
-Generate a `.devcontainer/devcontainer.json` with:
-
-- `image` set to `registry.fedoraproject.org/fedora:<release>` (default 41)
-- `features` for requested tools (Node, Go, Python, etc.)
-- `postCreateCommand` for any extra packages or global installs
-
-## Defaults
-- Fedora release: 41
-- Include `common-utils` and `git` features
-- No editor customization
-
-## Example Invocation
-"Create a devcontainer for Node 16.20.2 with Angular CLI 11.2.14 and Gulp. Use Fedora 40."
-
-## Example Output
-```json
-{
-  "name": "fedora-dev",
-  "image": "registry.fedoraproject.org/fedora:40",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {},
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "16.20.2"
-    }
-  },
-  "postCreateCommand": "npm install -g @angular/cli@11.2.14 gulp"
-}
-```
+1. Create a `.devconainer` directory for the project if it does not exist.
+2. Generate a `.devcontainer/devcontainer.json` plus a generic `.devcontainer/Dockerfile` and a `.devcontainer/bindep.txt` file in the project directory.
