@@ -16,7 +16,7 @@
       "enabled": false
     }
   },
-  "plugin": ["opencode-antigravity-auth@beta", "opencode-agent-skills"],
+  "plugin": ["opencode-antigravity-auth@beta"],
   "provider": {
     "google": {
       "models": {
