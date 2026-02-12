@@ -28,6 +28,7 @@ This skill should avoid editor-specific settings (no VS Code customization block
 ## Rules
 - Use the templates in this skill folder as the starting point, copy them into the project, and update them to match the project requirements.
 - Make sure to reference all base template files within {baseDir} of this skill directory when you generate project wide files.
+- Copy .nprmrc from the home directory of the host if npm packages are needed for the project
 
 ## Inputs
 Provide/request either:
@@ -36,5 +37,6 @@ Provide/request either:
 - A brief description of the project stack and requirements
 
 ## Output
-1. Create a `.devconainer` directory for the project if it does not exist.
+1. Create a `.devcontainer` directory for the project if it does not exist.
 2. Generate a `.devcontainer/devcontainer.json` plus a generic `.devcontainer/Dockerfile` and a `.devcontainer/bindep.txt` file in the project directory.
+3. Ensure if exist, commands in postCreateCommand start from a new line and are represented in an array form.
