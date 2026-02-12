@@ -26,10 +26,28 @@ return {
 				"ansiblels",
 				"bashls",
 				"jsonls",
-                "marksman",
+				"marksman",
 			},
 			automatic_installation = true,
 		})
+
+        -- ignore Fugitive buffers
+		vim.lsp.start = (function()
+			local old_lsp_start = vim.lsp.start
+			return function(...)
+				local opt = select(2, ...)
+				if opt and opt.bufnr then
+					if
+						not vim.api.nvim_buf_is_valid(opt.bufnr)
+						or vim.b[opt.bufnr].fugitive_type
+						or vim.startswith(vim.api.nvim_buf_get_name(opt.bufnr), "fugitive://")
+					then
+						return
+					end
+				end
+				old_lsp_start(...)
+			end
+		end)()
 
 		vim.lsp.config("ansiblels", {
 			filetypes = { "yaml", "yml", "yaml.ansible" },
@@ -54,7 +72,7 @@ return {
 				"--background-index",
 			},
 			init_options = {
-                fallbackFlags = { '--std=c++23' },
+				fallbackFlags = { "--std=c++23" },
 				usePlaceholders = true,
 				completeUnimported = true,
 				clangdFileStatus = true,
