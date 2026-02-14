@@ -1,7 +1,6 @@
 ---
 name: devcontainer-create
 description: Create devcontainers for the project with Dockerfile + bindep list
-compatibility: opencode
 ---
 ## Purpose
 Create a reusable devcontainer for any project using a generic Dockerfile and a bindep dependency file.

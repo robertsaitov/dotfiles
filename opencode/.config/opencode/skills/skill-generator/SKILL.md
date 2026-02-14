@@ -1,7 +1,6 @@
 ---
 name: skill-generator
 description: Generate Opencode Agent Skills from local or remote repositories using Repomix
-compatibility: opencode
 ---
 
 ## Purpose

@@ -1,7 +1,6 @@
 ---
 name: devcontainer-exec
 description: Execute commands in devcontainer
-compatibility: opencode
 ---
 ## Purpose
 Run project commands inside a devcontainer using Podman (default) or Docker, while keeping the AI agent on the host.

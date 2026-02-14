@@ -1,7 +1,6 @@
 ---
 name: project-tree
 description: Generate a file tree visualization for the current project and save it to Project-Tree.md. Supports configurable exclusions for directories like node_modules.
-compatibility: opencode
 ---
 
 ## Purpose
