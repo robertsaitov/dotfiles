@@ -1,4 +1,7 @@
+skills/
+sessions/
 log/
 shell_snapshots/
 tmp/
 *.json
+history.jsonl
