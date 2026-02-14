@@ -35,3 +35,6 @@ source "$HOME/.zsh_profile"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Override codex config directory
+export CODEX_HOME="$HOME/.config/codex"

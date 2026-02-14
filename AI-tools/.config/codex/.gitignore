@@ -1,0 +1,4 @@
+log/
+shell_snapshots/
+tmp/
+*.json
