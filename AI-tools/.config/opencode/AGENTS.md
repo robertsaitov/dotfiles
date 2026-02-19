@@ -1,5 +1,5 @@
 # AGENTS.MD
-Start: say hi + 1 programming joke. Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
+Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
 
 ## Software development rules
 - Keep files <~500 LOC; split/refactor as needed.
