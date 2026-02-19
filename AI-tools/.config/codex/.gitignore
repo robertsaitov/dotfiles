@@ -5,3 +5,4 @@ shell_snapshots/
 tmp/
 *.json
 history.jsonl
+.personality_migration
