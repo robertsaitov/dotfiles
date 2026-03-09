@@ -21,7 +21,7 @@ return {
 				"vtsls",
 				"html",
 				"cssls",
-				"basedpyright",
+				"pyright",
 				"clangd",
 				"ansiblels",
 				"bashls",
