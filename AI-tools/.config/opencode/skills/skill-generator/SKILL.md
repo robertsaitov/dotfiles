@@ -2,9 +2,8 @@
 name: skill-generator
 description: Generate Opencode Agent Skills from local or remote repositories using Repomix
 ---
-
 ## Purpose
-Generate Opencode Agent Skills format output from codebases, creating structured directories that can be used as reusable codebase references. This is particularly useful for referencing implementations from remote repositories while working on local code.
+Generate Agent Skills format output from codebases, creating structured directories that can be used as reusable codebase references. This is particularly useful for referencing implementations from remote repositories while working on local code.
 
 ## Preconditions
 - repomix installed (`npm install -g repomix`)
@@ -43,8 +42,7 @@ repomix --skill-generate --compress --remove-comments --remove-empty-lines
 ```
 
 ## Skills Location
-- **Opencode global skills**: `{baseDir}` - Available across all projects
-- **Project Skills**: `.opencode/skills/` - Shared via git (add to .gitignore to avoid committing large files)
+- **Agent global skills**: `{baseDir}` - Available across all projects
 
 ## Auto-generated names
 Names are converted to kebab-case, limited to 64 characters:
@@ -58,7 +56,7 @@ Names are converted to kebab-case, limited to 64 characters:
 
 ## Rules
 1. Cannot be used with `--stdout` or `--copy` options
-2. When generating project skills, consider adding `.opencode/skills/repomix-reference-*/` to .gitignore
+2. When generating project skills, consider adding `{baseDir}/repomix-reference-*/` to .gitignore
 3. Use `--include` for documentation-only skills when you only want to reference docs
 4. Use `--remote` with GitHub URLs to create reference skills from open source projects
-5. Skills are automatically available in opencode if saved to `{baseDir}` or `.opencode/skills/`
+5. Skills are automatically available in opencode if saved to `{baseDir}`
