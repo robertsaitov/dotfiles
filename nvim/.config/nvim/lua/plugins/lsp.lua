@@ -49,14 +49,14 @@ return {
 			end
 		end)()
 
-		local ansible_cache_dir = vim.fn.stdpath("cache") .. "/ansible"
-		vim.fn.mkdir(ansible_cache_dir, "p")
-
 		vim.lsp.config("ansiblels", {
 			filetypes = { "yaml", "yml", "yaml.ansible" },
-			cmd_env = {
-				ANSIBLE_HOME = ansible_cache_dir,
-				ANSIBLE_LOCAL_TEMP = ansible_cache_dir .. "/tmp",
+			settings = {
+				ansible = {
+					executionEnvironment = {
+						enabled = false,
+					},
+				},
 			},
 		})
 
