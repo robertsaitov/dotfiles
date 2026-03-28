@@ -5,3 +5,4 @@ background-opacity = 0.95
 clipboard-read = allow
 clipboard-paste-protection = false
 gtk-titlebar = false
+mouse-scroll-multiplier = precision:0.5,discrete:0.5
