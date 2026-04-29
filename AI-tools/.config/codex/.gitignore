@@ -3,6 +3,11 @@ sessions/
 log/
 shell_snapshots/
 tmp/
+.tmp/
 *.json
 history.jsonl
 .personality_migration
+installation_id
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
