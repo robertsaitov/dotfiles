@@ -29,7 +29,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer\n"
-export PATH="$HOME/.local/scripts:/usr/local/go/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/scripts:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin:$PATH"
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 source "$HOME/.zsh_profile"
 
