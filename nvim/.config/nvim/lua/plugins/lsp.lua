@@ -23,7 +23,6 @@ return {
 				"cssls",
 				"pyright",
 				"clangd",
-				"ansiblels",
 				"bashls",
 				"jsonls",
 				"marksman",
