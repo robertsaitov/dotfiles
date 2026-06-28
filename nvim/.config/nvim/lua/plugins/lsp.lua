@@ -30,7 +30,7 @@ return {
 			automatic_installation = true,
 		})
 
-        -- ignore Fugitive buffers
+		-- ignore Fugitive buffers
 		vim.lsp.start = (function()
 			local old_lsp_start = vim.lsp.start
 			return function(...)
@@ -44,7 +44,7 @@ return {
 						return
 					end
 				end
-				old_lsp_start(...)
+				return old_lsp_start(...)
 			end
 		end)()
 
