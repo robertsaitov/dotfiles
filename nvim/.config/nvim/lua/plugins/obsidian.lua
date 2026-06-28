@@ -14,7 +14,6 @@ return {
 			},
 		},
 		completion = {
-            blink = true,
 			min_chars = 2,
 		},
 		new_notes_location = "notes_subdir",
