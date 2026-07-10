@@ -1,5 +1,26 @@
 web_search = "cached"
-model = "gpt-5.3-codex"
+model = "gpt-5.6-terra"
+approvals_reviewer = "user"
+model_reasoning_effort = "medium"
+
+[notice]
+hide_full_access_warning = true
 
 [notice.model_migrations]
 "gpt-5.2-codex" = "gpt-5.3-codex"
+"gpt-5.3-codex" = "gpt-5.4"
+
+[projects."/home/robert"]
+trust_level = "trusted"
+
+[projects."/home/robert/personal/hyprland-dotfiles"]
+trust_level = "trusted"
+
+[projects."/home/robert/personal"]
+trust_level = "trusted"
+
+[projects."/home/robert/personal/dotfiles"]
+trust_level = "trusted"
+
+[tui.model_availability_nux]
+"gpt-5.6-sol" = 1
