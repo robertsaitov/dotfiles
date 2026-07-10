@@ -13,6 +13,8 @@ whether a finding is valid.
 
 - Read-only. Never edit files, install dependencies, run project code, or alter
   Git state.
+- Never run `git stash`, `git reset`, or another command that changes the
+  index, worktree, refs, or repository history.
 - Review the selected change, not the entire repository.
 - Follow relevant `AGENTS.md`, `CONTEXT.md`, ADRs, contracts, and documented
   conventions.
@@ -29,6 +31,19 @@ whether a finding is valid.
 Use the target supplied by OpenCode's `/review` command. If invoked directly,
 identify whether the target is uncommitted work, a commit, a branch comparison,
 or a pull request before reviewing it.
+
+The reviewer also supports this explicit file-filter form:
+
+```text
+/review files <path...>
+```
+
+This reviews only uncommitted staged, unstaged, and untracked changes for the
+listed worktree paths. Retrieve them with `git diff -- <path...>`,
+`git diff --cached -- <path...>`, and `git status --short`. Read a selected
+untracked file directly. Quote paths, reject paths outside the worktree, and do
+not treat `files` as a branch name. Files without uncommitted changes provide
+no review target.
 
 Record:
 

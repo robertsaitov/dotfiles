@@ -40,6 +40,8 @@ permission:
     "*--textconv*": deny
     "*--web*": deny
     "git diff*tool*": deny
+    "git stash*": deny
+    "git reset*": deny
   task: deny
   skill:
     "*": deny
@@ -72,7 +74,8 @@ Actively look for disconfirming evidence. Reject style preferences, defensive
 coding suggestions without a reachable failure, and claims based only on the
 diff. Do not run tests or project code. Never use shell redirects, command
 substitution, or command separators. Never inspect known secret files or
-reproduce secret values found in a diff.
+reproduce secret values found in a diff. Never run `git stash`, `git reset`, or
+any command that changes Git state.
 
 Return a compact list of candidates using the skill's candidate schema. If no
 issue survives investigation, return `No candidate findings` and name the

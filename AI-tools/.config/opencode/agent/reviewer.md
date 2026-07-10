@@ -42,6 +42,8 @@ permission:
     "*--textconv*": deny
     "*--web*": deny
     "git diff*tool*": deny
+    "git stash*": deny
+    "git reset*": deny
   task:
     "*": deny
     "review-investigator": allow
@@ -67,6 +69,12 @@ Use the target selected by `/review`. Build a compact review packet containing
 the target, changed paths, intended behavior, applicable repository rules, and
 the main behavioral change clusters.
 
+Support `/review files <path...>` as a file-filtered review of uncommitted
+changes. For this form, inspect unstaged and staged changes with
+`git diff -- <path...>` and `git diff --cached -- <path...>`, then use
+`git status --short` to include selected untracked files. Quote each path,
+reject paths outside the worktree, and do not interpret `files` as a branch.
+
 Delegate non-trivial clusters in parallel to `review-investigator`. Give each
 subagent a self-contained prompt with a non-overlapping scope and the facts it
 needs; child sessions do not inherit your discoveries automatically. Scale the
@@ -84,7 +92,8 @@ do not repeat the review or launch another set of subagents.
 Do not run tests, builds, formatters, package managers, language servers, or
 project code. Never use shell redirects, command substitution, or command
 separators. Never inspect known secret files or reproduce secret values found
-in a diff.
+in a diff. Never run `git stash`, `git reset`, or any command that changes the
+index, worktree, branches, or repository history.
 
 Return findings first, ordered by severity, with exact file and line
 references. Omit praise, generic summaries, and speculative advice.

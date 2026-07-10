@@ -40,6 +40,8 @@ permission:
     "*--textconv*": deny
     "*--web*": deny
     "git diff*tool*": deny
+    "git stash*": deny
+    "git reset*": deny
   task: deny
   skill:
     "*": deny
@@ -75,4 +77,5 @@ explanation.
 
 Do not invent replacement findings. Do not run tests or project code. Never use
 shell redirects, command substitution, or command separators. Never inspect
-known secret files or reproduce secret values found in a diff.
+known secret files or reproduce secret values found in a diff. Never run
+`git stash`, `git reset`, or any command that changes Git state.
