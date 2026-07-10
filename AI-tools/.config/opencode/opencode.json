@@ -14,5 +14,8 @@
       },
       "enabled": false
     }
-  }
+  },
+  "plugin": [
+    "@prevalentware/opencode-goal-plugin"
+  ]
 }
