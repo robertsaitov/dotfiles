@@ -1,6 +1,7 @@
 ---
 description: Agent to ask general questions about things
 mode: primary
+model: openai/gpt-5.6-terra
 permission:
   edit: deny
   bash: deny
