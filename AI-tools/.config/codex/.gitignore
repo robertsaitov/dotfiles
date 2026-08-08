@@ -7,7 +7,13 @@ tmp/
 *.json
 history.jsonl
 .personality_migration
+.sandbox_migration
 installation_id
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
+cache/
+memories/
+plugins/
+rules/
+thread-writer-locks/
