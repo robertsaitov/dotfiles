@@ -8,8 +8,22 @@ return {
         require("lualine").setup({
             options = {
                 theme = "nord",
+                always_show_tabline = false,
             },
             sections = { lualine_x = {'encoding', 'fileformat', 'filetype', getWords} },
+            tabline = {
+                lualine_a = {
+                    {
+                        "tabs",
+                        mode = 2,
+                        path = 0,
+                        max_length = function()
+                            return vim.o.columns
+                        end,
+                        tab_max_length = 0,
+                    },
+                },
+            },
             extensions = { "fugitive", "mason", "oil", "fzf", "lazy" },
         })
     end,
