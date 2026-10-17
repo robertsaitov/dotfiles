@@ -17,5 +17,6 @@
   },
   "plugin": [
     "@prevalentware/opencode-goal-plugin"
-  ]
+  ],
+  "share": "disabled"
 }
