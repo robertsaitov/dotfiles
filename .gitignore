@@ -1,2 +1,10 @@
 __pycache__/
 *.py[cod]
+
+# Codex runtime artifacts
+AI-tools/.config/codex/.sqlite-maintenance.lock
+AI-tools/.config/codex/app-server-control/
+AI-tools/.config/codex/app-server-daemon/
+AI-tools/.config/codex/packages/
+AI-tools/.config/codex/session_index.jsonl
+AI-tools/.config/codex/tui-thread-reference-capabilities/

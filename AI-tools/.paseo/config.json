@@ -5,12 +5,11 @@
     "listen": "0.0.0.0:6767",
     "hostnames": ["localhost", ".localhost"],
     "mcp": { "enabled": true },
-    "relay": { "enabled": false }
+    "relay": { "enabled": false },
+    "browserTools": { "enabled": true }
   },
 
   "features": {
-    "webUi": {
-      "enabled": false
-    }
+    "webUi": { "enabled": false }
   }
 }
