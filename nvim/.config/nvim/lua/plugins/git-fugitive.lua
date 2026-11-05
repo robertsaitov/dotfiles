@@ -2,7 +2,7 @@ return {
     "tpope/vim-fugitive",
     dependencies = {
        "lewis6991/gitsigns.nvim",
-       "barrettruth/diffs.nvim"
+       { url = "https://forge.barrettruth.com/barrettruth/diffs.nvim", lazy = false },
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()

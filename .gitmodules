@@ -1,3 +1,7 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "AI-tools/.agents/sources/benjitaylor-skills"]
+	path = AI-tools/.agents/sources/benjitaylor-skills
+	url = https://github.com/benjitaylor/skills.git
+	branch = main
